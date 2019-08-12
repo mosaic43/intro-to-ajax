@@ -33,6 +33,10 @@
     $('#loadBtn2').remove()
   }
 
+
+
+
+
   //
   // Pretty simple, right?
   //
@@ -71,6 +75,32 @@
   //
 
   // TODO: your code goes here :)
+
+
+
+  var myData
+
+  $('#generateDoggoBtn').click(clickBtn2)
+
+  function clickBtn2 () {
+    $("#generateDoggoBtn").text("Generating Doggo ...");
+    $("#generateDoggoBtn").prop("disabled", true);
+
+
+    $.getJSON('https://dog.ceo/api/breeds/image/random', function(myresponse) {
+
+      imageURL = myresponse.message
+     
+    $("#doggoContainer").empty().append($("<img src='" + imageURL + "' />"     ))
+
+    $("#generateDoggoBtn").text("Generate Doggo");
+    $("#generateDoggoBtn").prop("disabled", false);
+
+    })
+  }
+
+
+
 
   //
   // Cool. Now let's kick it up a notch and allow selecting a specific breed of dog!
