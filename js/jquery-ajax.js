@@ -78,7 +78,7 @@
 
 
 
-  var myData
+  var imageURL
 
   $('#generateDoggoBtn').click(clickBtn2)
 
@@ -137,6 +137,43 @@
   //
 
   // TODO: your code goes here :)
+
+  var dogList;
+  $("#selectBreedContainer").append($("<select id='doggolist'></select>"));
+
+  $.ajax({
+  url: 'https://dog.ceo/api/breeds/list',
+  success: function(pups){
+    
+    dogList = pups.message
+
+    var dogoption = "";
+
+    $.each(dogList,function(i){
+        dogoption += '<option value="'+dogList[i]+'">'+dogList[i]+'</option>'; 
+    });
+    
+    $('#doggolist').append(dogoption);
+
+    $('#doggolist').on('change', function(){
+// console.log(this.value)
+      $.getJSON('https://dog.ceo/api/breed/' + this.value + '/images/random', function(myresponse) {
+
+        $("#doggoContainer").empty().append($("<img src='" + myresponse.message + "' />"     ))
+
+      })
+
+    })
+
+  }
+    })
+  
+
+
+
+
+
+
 
   //
   // Excellent work!
