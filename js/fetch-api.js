@@ -123,6 +123,7 @@
       containerEl2.innerHTML = "<img src='" + responseTxt[0].url + "' />"
 console.log(responseTxt[0].url)
 
+$("#generateCatBtn").prop("disabled", false);
     }
 
   }
