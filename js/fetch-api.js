@@ -93,6 +93,67 @@
 
   // TODO: your code goes here :)
 
+
+  $('#generateCatBtn').click(clickBtn2)
+
+  function clickBtn2 () {
+    $("#generateCatBtn").text("Generating Cattos ...");
+    $("#generateCatBtn").prop("disabled", true);
+
+    var myHeader = new Headers({
+      'Content-Type': 'application/json',
+      'x-api-key': 'f7d2444b-7bee-487b-84c0-2cb408f925c6',
+    });
+ 
+    fetch('https://api.thecatapi.com/v1/images/search?size=full&mime_types=jpg&format=json&has_breeds=1&order=RANDOM&page=0&limit=1')
+    .then(extractText)
+    .then(URL),
+    {
+      headers: myHeader
+    };
+
+    function extractText (response){
+      return response.json()
+
+    }
+
+    function URL (responseTxt){
+      console.log('response.text() has resolved. I am the callback from the second Promise object.')
+      const containerEl2 = document.getElementById('catContainer')
+      containerEl2.innerHTML = "<img src='" + responseTxt[0].url + "' />"
+console.log(responseTxt[0].url)
+
+    }
+
+  }
+
+
+
+
+
+
+
+
+  //   var myHeader = new Headers({
+  //     'Content-Type': 'application/json',
+  //     'x-api-key': 'f7d2444b-7bee-487b-84c0-2cb408f925c6',
+  //   });
+  //   // fetch('https://api.thecatapi.com/v1/breeds?limit=10&page=0'),
+  //   fetch('https://api.thecatapi.com/v1/images/search?size=full&mime_types=jpg&format=json&has_breeds=1&order=RANDOM&page=0&limit=1').then((response) => {
+  //     response.arrayBuffer().then((buffer) => {
+  //       var catpic = 'url:https://cdn2.thecatapi.com/images/ujxcyomIQ.jpg';
+        
+
+  //       // document.querySelector('img').src = catpic;
+  //     })
+  //   }), {
+  //     headers: myHeader
+  //   };
+  // }
+
+
+  
+
   //
   // What else can you build with your new AJAX knowledge?
   //
